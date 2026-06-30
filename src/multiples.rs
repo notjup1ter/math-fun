@@ -22,3 +22,32 @@ pub fn sum_multiples_3or5_guass(n:u32) -> u32 {
     let sum_15 = sum_multiples_k_guass(n, 15); // to handle multiples of both (duplication)
     sum_3 + sum_5 - sum_15
 }
+
+
+///Unit Testing
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    // Testing correctness of iterative version
+    #[test]
+    fn iterative_tests() {
+        assert_eq!(sum_multiples_3or5_iter(1000), 233168);
+        assert_eq!(sum_multiples_3or5_iter(4), 3);
+        assert_eq!(sum_multiples_3or5_iter(2), 0);
+    }
+
+    // Testing correctness of Guass' formula implementation
+    #[test]
+    fn guass_tests() {
+        assert_eq!(sum_multiples_k_guass(1000, 3), 166833);
+        assert_eq!(sum_multiples_k_guass(1000, 5) , 99500);
+    }
+
+    // Testing equality of both types of functions with original problem
+    #[test]
+    fn compare_guass_and_iterative() {
+        assert_eq!(sum_multiples_3or5_guass(1000), sum_multiples_3or5_iter(1000))
+    }
+}
