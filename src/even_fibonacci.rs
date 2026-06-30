@@ -1,7 +1,7 @@
 /// Returns the sum of all even fibbonacci numbers that do not exceed 
 /// input n
 
-fn create_fib_sequence(n:u32) -> Vec<u32> {
+pub fn create_fib_sequence(n:u32) -> Vec<u32> {
     let mut fib_vec : Vec<u32> = vec![1, 2];
 
     // Fibonacci sequence construction
@@ -10,6 +10,12 @@ fn create_fib_sequence(n:u32) -> Vec<u32> {
         if temp_sum > n {break;} else {fib_vec.push(temp_sum)}
     }
     fib_vec
+}
+
+pub fn even_fib_sum(n: u32) -> u32 {
+    create_fib_sequence(n).into_iter()
+        .filter(|x| x % 2 == 0)
+        .sum()
 }
 
 
@@ -27,4 +33,11 @@ mod tests {
     fn fib_seq_creation_test() {
         assert_eq!(create_fib_sequence(100), vec![1, 2, 3, 5, 8, 13, 21, 34, 55, 89]);
     }
+
+    // Test for ensuring the proper sum of even Fibonacci numbers is
+    // produced
+    #[test]
+    fn even_fib_sum_test() {
+        assert_eq!(even_fib_sum(4000000), 4613732)
+    } 
 }
