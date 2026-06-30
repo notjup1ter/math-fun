@@ -1,14 +1,21 @@
-//This is a function that will handle the sum of all multiples of 3 and 5 from 1 to any given n > 1
+
+
+/// Returns the sum of all multiples of three or five, from 0 to the upper limit n, iteratively
+/// 
+/// The input and output are unsigned, 32-bit integers
 pub fn sum_multiples_3or5_iter(n:u32) -> u32 {
     (0..n).filter(|x| x % 3 == 0 || x % 5 == 0).sum()
 }
 
-//here, k is the multiple, and n is the upper limit
+/// Same as sum_multiples_3or5_iter, but using Carl Guass' formula for a given k
+/// 
+/// Input n is the same as above, but k represents the number to find multiples of
 pub fn sum_multiples_k_guass(n:u32, k: u32) -> u32 {
     let num_valid_terms: u32 = (n-1) / k;
     k * (num_valid_terms * (num_valid_terms+1) / 2)
 }
 
+/// Calculates the sum of all multiples of both 3 and 5 using Carl Guass' formula
 pub fn sum_multiples_3or5_guass(n:u32) -> u32 {
     let sum_3 = sum_multiples_k_guass(n, 3);
     let sum_5 = sum_multiples_k_guass(n, 5);

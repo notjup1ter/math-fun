@@ -12,3 +12,8 @@ The way this works is by:
 2. adding the left and right elements together, making n pairs of n + 1 -> n(n+1)
 3. dividing this by 2 to avoid two passes of pairs
 4. multipling that estimate of pairs by k to get the sum of those elements (notice initial division of k from the list) 
+
+Benchmark for all multiples up to (excluding) 100000:
+-- 1.495 NANOSECONDS
+-- upper bound of 1.4976 ns 
+-- 25000x faster that the iterative version, how cool!
