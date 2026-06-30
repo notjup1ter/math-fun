@@ -48,6 +48,6 @@ mod tests {
     // Testing equality of both types of functions with original problem
     #[test]
     fn compare_guass_and_iterative() {
-        assert_eq!(sum_multiples_3or5_guass(1000), sum_multiples_3or5_iter(1000))
+        assert_eq!(sum_multiples_3or5_guass(1000), sum_multiples_3or5_iter(1000));
     }
 }
