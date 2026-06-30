@@ -1,5 +1,5 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use math_fun::multiples;
+use math_fun::*;
 
 fn mutliples_benchmark(c: &mut Criterion) {
     let mut group = c.benchmark_group("Sum of Multiples (Limit 100,000)");
@@ -18,5 +18,16 @@ fn mutliples_benchmark(c: &mut Criterion) {
     group.finish();
 }
 
-criterion_group!(benches, mutliples_benchmark);
+fn even_fibonacci_benchmark(c: &mut Criterion) {
+    let mut group = c.benchmark_group("Sum of even Fibonacci vales < 4000000");
+
+    group.bench_function("Double-iterative (Sequence creation and filtering)", 
+        |b| 
+        b.iter(|| even_fibonacci::even_fib_sum(4000000))
+    );
+
+    group.finish();
+}
+
+criterion_group!(benches, mutliples_benchmark, even_fibonacci_benchmark);
 criterion_main!(benches);
