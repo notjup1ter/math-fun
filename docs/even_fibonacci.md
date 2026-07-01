@@ -10,4 +10,9 @@ One way I found to optimize this was to reduce the size of the fib array to ONLY
 --Runtime
 ---Still O(N), but reduced space and so technically its O(N/3)
 ---Benchmark Data
+85.745 ns with a 85.936 upper bound
+-1.61x faster than the original approach
+
+
+
 
