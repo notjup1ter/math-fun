@@ -5,12 +5,12 @@ fn mutliples_benchmark(c: &mut Criterion) {
     let mut group = c.benchmark_group("Sum of Multiples (Limit 100,000)");
 
     group.bench_function(
-        "sum of multiples up to 100000, iteratively", 
+        "Iteratively", 
         |b| 
         b.iter(|| multiples::sum_multiples_3or5_iter(black_box(100000)))
     );
     group.bench_function(
-        "sum of multiples up to 100000, guass' estimate", 
+        "Carl Guass' formula", 
         |b| 
         b.iter(|| multiples::sum_multiples_3or5_guass(black_box(100000)))
     );
@@ -24,6 +24,11 @@ fn even_fibonacci_benchmark(c: &mut Criterion) {
     group.bench_function("Double-iterative (Sequence creation and filtering)", 
         |b| 
         b.iter(|| even_fibonacci::even_fib_sum(4000000))
+    );
+
+    group.bench_function("Iterative method with reduced vector size",
+        |b| 
+        b.iter(|| even_fibonacci::even_fib_sum_v2(4000000))
     );
 
     group.finish();
